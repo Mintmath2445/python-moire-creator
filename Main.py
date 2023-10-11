@@ -6,52 +6,115 @@ from PIL import Image as im, ImageDraw as imdraw
 # create array filled with white pixels 500x500, with the variables
 # x is horizontal limit, y is vertical limit and d is the step between each line, in pixels
 # w is the width of each line
+# didpass is a checking variable for try loops
+didpass = False
 print("input dimensions of image")
 while True :
     try:
         x = int(input())
+        if x > 4096:
+            print("Too large")
+            didpass = False
+        else:
+            didpass = True
     except ValueError:
         print("Input an integer")
         
-    else:
+    if didpass !=False:
+        didpass = False
         break
-
+    
 while True :
     try:
         y = int(input())
+        if y > 4096:
+            print("Too large")
+            didpass = False
+        else:
+            didpass = True
     except ValueError:
         print("Input an integer")
         
-    else:
+    if didpass !=False:
+        didpass = False
         break
     
 print("input step of first set of lines")
 while True :
     try:
         d = int(input())
+        if d > x:
+            print("Too large")
+            didpass = False
+        else:
+            didpass = True
     except ValueError:
         print("Input an integer")
         
-    else:
+    if didpass !=False:
+        didpass = False
         break
     
 print("input step of second set of lines")
 while True :
     try:
         delta = int(input())
+        if delta > x:
+            print("Too large")
+            didpass = False
+        else:
+            didpass = True
     except ValueError:
         print("Input an integer")
         
-    else:
+    if didpass !=False:
+        didpass = False
         break
+    
+print("input width of lines")
+while True :
+    try:
+        w = int(input())
+        if w > d:
+            print("Too large")
+            didpass = False
+        else:
+            didpass = True
+    except ValueError:
+        print("Input an integer")
         
+    if didpass !=False:
+        didpass = False
+        break
+    
+print("want an angle?")
+print("Y or N")
+answer = input()
+yesses = ["Y","y","YES","yES","Yes", "yes"]
+noes = ["N", "n", "no", "NO", "nO", "No"]
+while True:
+    if answer in yesses:
+        print("input angle")
+        while True :
+            try:
+                a = int(input())*math.pi/180
+                break
+            except ValueError:
+                print("Input an integer")
+        break
+    elif answer in noes:
+        a = 0
+        break
+    else:
+        print("Y or N")
+        answer = input()
+      
 #for testing
-print("x= "+str(x))
-print("y= "+str(y))
-print("d= "+str(d))
-print("delta= "+str(delta))
-w = 3
-a = 0*math.pi/180
+print("x = "+str(x))
+print("y = "+str(y))
+print("d = "+str(d))
+print("delta = "+str(delta))
+print("w = "+str(w))
 array = np.full((y, x, 3), 
                         255, dtype = np.uint8) 
 
@@ -79,8 +142,12 @@ data.save("reseau1.png")
 draw2 = imdraw.Draw(data)
 n = 0
 while n<=x//delta :
-    draw2.line((y//math.tan(a)+n*delta,y , 0+n*delta,0), fill=0, width=w) 
-    n=n+1
+    try:
+        draw2.line((y//math.tan(a)+n*delta,0 , 0+n*delta,y), fill=0, width=w) 
+        n=n+1
+    except ZeroDivisionError:
+        draw2.line((n*delta,0 , n*delta,y), fill=0, width=w) 
+        n=n+1
    # if n==100:
         #break
 #print ("End of loop #2")
