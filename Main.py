@@ -93,7 +93,6 @@ while m<=x//ppcm :
 
 data.save("zones.png")
 
-#file_object = open("zoneclaire.png", "r")
 
 #end message
 print ("\nB)\n")
