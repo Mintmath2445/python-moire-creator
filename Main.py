@@ -8,32 +8,40 @@ from PIL import Image as im, ImageDraw as imdraw
 # w is the width of each line
 print("input dimensions of image")
 while True :
-    x = int(input())
-    if isinstance(x, int) == False :
-        print("input integer")
+    try:
+        x = int(input())
+    except ValueError:
+        print("Input an integer")
+        
     else:
         break
 
 while True :
-    y = int(input())
-    if isinstance(y, int) == False :
-        print("input integer")
+    try:
+        y = int(input())
+    except ValueError:
+        print("Input an integer")
+        
     else:
         break
     
 print("input step of first set of lines")
 while True :
-    d = int(input())
-    if isinstance(d, int) == False :
-        print("input integer")
+    try:
+        d = int(input())
+    except ValueError:
+        print("Input an integer")
+        
     else:
         break
     
 print("input step of second set of lines")
 while True :
-    delta = int(input())
-    if isinstance(delta, int) == False :
-        print("input integer")
+    try:
+        delta = int(input())
+    except ValueError:
+        print("Input an integer")
+        
     else:
         break
         
