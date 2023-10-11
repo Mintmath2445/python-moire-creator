@@ -51,7 +51,7 @@ print("y= "+str(y))
 print("d= "+str(d))
 print("delta= "+str(delta))
 w = 3
-a = -45*math.pi/180
+a = 0*math.pi/180
 array = np.full((y, x, 3), 
                         255, dtype = np.uint8) 
 
