@@ -50,7 +50,8 @@ print("x= "+str(x))
 print("y= "+str(y))
 print("d= "+str(d))
 print("delta= "+str(delta))
-w = 5
+w = 3
+a = -45*math.pi/180
 array = np.full((y, x, 3), 
                         255, dtype = np.uint8) 
 
@@ -78,7 +79,7 @@ data.save("reseau1.png")
 draw2 = imdraw.Draw(data)
 n = 0
 while n<=x//delta :
-    draw2.line((0+n*delta,0 , 0+n*delta,y), fill=0, width=w) 
+    draw2.line((y//math.tan(a)+n*delta,y , 0+n*delta,0), fill=0, width=w) 
     n=n+1
    # if n==100:
         #break
