@@ -97,10 +97,10 @@ while True:
         print("input angle")
         while True :
             try:
-                a = int(input())*math.pi/180
+                a = float(input())*math.pi/180
                 break
             except ValueError:
-                print("Input an integer")
+                print("Input a real")
         break
     elif answer in noes:
         a = 0
