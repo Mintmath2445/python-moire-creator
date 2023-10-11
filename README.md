@@ -1,6 +1,8 @@
 For the moment,
 Use a source-code editor such as vscode
 
+In the terminal, create a venv, install numpy and pillow
+
 In Main.py, run and open a terminal
 input the required parameters
 
