@@ -51,7 +51,7 @@ array = np.full((y, x, 3),
 
 #saves the array into im format to be transformed into png
 #draw will draw over original image, avec un reseau de lignes 
-#NOTE the order is (x,y) so 0,250, 500,250 will draw a horizontal line
+#NOTE the order is (x,y) so 0,250, 500,250 will draw a horizontal line of 500 pixels
 
 data = im.fromarray (array)
 draw = imdraw.Draw(data) 
@@ -77,7 +77,7 @@ while n<=x//delta :
 #print ("End of loop #2")
 
 data.save("moire.png")
-
+data.show()
 #moire avec quelques zones d'interet qui ont ete surlignees
 #trouver le ppcm
 ppcm = math.lcm(d, delta)
@@ -92,7 +92,6 @@ while m<=x//ppcm :
     m=m+1
 
 data.save("zones.png")
-
 
 #end message
 print ("\nB)\n")
