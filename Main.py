@@ -115,6 +115,7 @@ print("y = "+str(y))
 print("d = "+str(d))
 print("delta = "+str(delta))
 print("w = "+str(w))
+print("angle = "+str(a*180/math.pi))
 array = np.full((y, x, 3), 
                         255, dtype = np.uint8) 
 
