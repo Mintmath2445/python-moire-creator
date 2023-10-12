@@ -1,4 +1,6 @@
+
 #imports
+import os
 import math
 import numpy as np
 from PIL import Image as im, ImageDraw as imdraw
