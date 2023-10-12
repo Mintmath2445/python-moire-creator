@@ -1,0 +1,13 @@
+Make sure you have a version of python3 installed, it may not be the main version of the MacOS since some need
+older versions to run. Be sure to have pip installed, it usually comes by default with python 3.4 +
+other use this documentation for help: https://pip.pypa.io/en/stable/cli/pip_install/
+
+in the terminal run:
+
+      pip3 install numpy
+      pip3 install pillow
+
+then run the main.py by opening with python the path for the main.py file:
+python3 /users/name/.../python-moire-creator/main.py
+
+read readme.md for further information
