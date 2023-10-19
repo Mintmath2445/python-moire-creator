@@ -163,11 +163,11 @@ ppcm = math.lcm(d, delta)
 
 draw3 = imdraw.Draw(data)
 draw4 = imdraw.Draw(data)
-#rouge = zone clair, vert = zone sombre
+#rouge = zone sombre???, vert = zone sombre
 m=0
-while m<=x//ppcm :
-    draw3.line((m*ppcm,0 , m*ppcm,y), fill= (230, 0, 0), width=w)
-    draw4.line((ppcm//2 + m*ppcm,0 , ppcm//2 + m*ppcm,y), fill=(0, 230, 0), width=w)
+while m<=20 :
+    draw3.line((m*(d//(2*delta-2*d)),0 ,m*(d//(2*delta-2*d)) ,y), fill= (230, 0, 0), width=w)
+    #draw4.line((m*d*(d//(2*delta-2*d))//2,0 ,m*d*(d//(2*delta-2*d))//2 ,y), fill=(0, 230, 0), width=w)
     m=m+1
 
 data.save("zones.png")
