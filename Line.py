@@ -9,7 +9,6 @@ from PIL import Image as im, ImageDraw as imdraw
 # x is horizontal limit, y is vertical limit and d is the step between each line, in pixels
 # w is the width of each line
 # didpass is a checking variable for try loops
-didpass = False
 print("input dimensions of image")
 while True :
     try:
