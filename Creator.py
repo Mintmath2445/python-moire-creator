@@ -23,8 +23,14 @@ while True:
         check = False
         break
 if choice == 1:
-    open("Line.py")
+    with open("Line.py", 'r') as file:
+         python_code = file.read()
+         exec(python_code)
 if choice == 2:
-    open("Circles.py")
-if choice == 3:
-    open("Angle.py")
+    with open("Circles.py", 'r') as file:
+         python_code = file.read()
+         exec(python_code)
+#if choice == 3:
+    #open("Angle.py")
+else:
+    print("Oops, an error has occured, :C")

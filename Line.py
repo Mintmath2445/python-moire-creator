@@ -88,28 +88,6 @@ while True :
         didpass = False
         break
     
-print("want an angle?")
-print("Y or N")
-answer = input()
-yesses = ["Y","y","YES","yES","Yes", "yes"]
-noes = ["N", "n", "no", "NO", "nO", "No"]
-while True:
-    if answer in yesses:
-        print("input angle")
-        while True :
-            try:
-                a = float(input())*math.pi/180
-                break
-            except ValueError:
-                print("Input a real")
-        break
-    elif answer in noes:
-        a = 0
-        break
-    else:
-        print("Y or N")
-        answer = input()
-      
 #for testing
 print("PPCM = "+str(math.lcm(d,delta)))
 print("x = "+str(x))
@@ -117,7 +95,7 @@ print("y = "+str(y))
 print("d = "+str(d))
 print("delta = "+str(delta))
 print("w = "+str(w))
-print("angle = "+str(a*180/math.pi))
+#print("angle = "+str(a*180/math.pi))
 array = np.full((y, x, 3), 
                         255, dtype = np.uint8) 
 
@@ -145,10 +123,6 @@ data.save("reseau1.png")
 draw2 = imdraw.Draw(data)
 n = 0
 while n<=x//delta :
-    try:
-        draw2.line((y//math.tan(a)+n*delta,0 , 0+n*delta,y), fill=0, width=w) 
-        n=n+1
-    except ZeroDivisionError:
         draw2.line((n*delta,0 , n*delta,y), fill=0, width=w) 
         n=n+1
    # if n==100:
