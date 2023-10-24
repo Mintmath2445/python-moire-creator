@@ -20,7 +20,7 @@ while True :
             didpass = True
     except ValueError:
         print("Input an integer")
-        
+        didpass=False
     if didpass !=False:
         didpass = False
         break
@@ -35,7 +35,7 @@ while True :
             didpass = True
     except ValueError:
         print("Input an integer")
-        
+        didpass= False
     if didpass !=False:
         didpass = False
         break
@@ -51,7 +51,7 @@ while True :
             didpass = True
     except ValueError:
         print("Input an integer")
-        
+        didpass = False
     if didpass !=False:
         didpass = False
         break
@@ -67,7 +67,7 @@ while True :
             didpass = True
     except ValueError:
         print("Input an integer")
-        
+        didpass = False
     if didpass !=False:
         didpass = False
         break
@@ -83,7 +83,7 @@ while True :
             didpass = True
     except ValueError:
         print("Input an integer")
-        
+        didpass = False
     if didpass !=False:
         didpass = False
         break
