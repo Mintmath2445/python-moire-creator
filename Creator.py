@@ -7,7 +7,7 @@ print(list)
 while True:
     try:
         choice = int(input())
-        if (choice > 3) and (choice < 1):
+        if (choice > 3) or (choice < 1):
             print("input one the numbers given")
             print(list)
             check = False
@@ -18,6 +18,7 @@ while True:
     except ValueError:
         print("input one the numbers given")
         print(list)
+        check = False
     if check != False:
         check = False
         break
@@ -27,8 +28,3 @@ if choice == 2:
     open("Circles.py")
 if choice == 3:
     open("Angle.py")
-    
-        
-    
-
-       
