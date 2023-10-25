@@ -34,3 +34,5 @@ if choice == 2:
     #open("Angle.py")
 else:
     print("Oops, an error has occured, :C")
+    exit(-1)
+exit(0)

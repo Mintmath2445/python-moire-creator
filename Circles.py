@@ -112,7 +112,7 @@ draw = imdraw.Draw(data)
 #cercle 1
 i = 0
 while i<=x//d :
-    draw.line((0+i*d,0 , 0+i*d,y), fill=0, width=w)
+    draw.ellipse((x/3 - d*i, y/2 - d*i, d*i + x/3, d*i + y/2), fill=None,outline = 0, width=w)
     i=i+1
     #if i==50:
         #break
@@ -121,17 +121,24 @@ while i<=x//d :
 data.save("cercle1.png")
 
 #cercle 2
-
+n = 0
+while n<=x//d :
+    draw.ellipse((2*x/3 - delta*n, y/2 - delta*n, delta*n + 2*x/3, delta*n + y/2), fill=None,outline = 0, width=w)
+    n=n+1
+    
 data.save("moirecercle.png")
 data.show()
 #moire avec quelques zones d'interet qui ont ete surlignees
 
-#rouge = zone sombre???, vert = zone sombre
+#bleu = zone claire, vert = zone sombre
+m=0
+#while m<=x//d :
+    #draw.line(0, y/2, x/3, )
 
-
-
+#data.save("zonescercle.png")
 
 #end message
 print ("\nB)\n")
 print ("!!! All done !!!\n")
 print (":]\n")
+exit(0)

@@ -141,7 +141,7 @@ draw4 = imdraw.Draw(data)
 m=0
 while m<=x//ppcm :
     draw3.line((m*ppcm,0 , m*ppcm,y), fill= (0, 0, 255), width=w)
-    draw4.line((ppcm//2 + m*ppcm,0 , ppcm//2 + m*ppcm,y), fill=(0, 255, 0), width=w)
+    draw4.line((ppcm/2 + m*ppcm,0 , ppcm/2 + m*ppcm,y), fill=(0, 255, 0), width=w)
     m=m+1
 
 data.save("zones.png")
@@ -150,3 +150,4 @@ data.save("zones.png")
 print ("\nB)\n")
 print ("!!! All done !!!\n")
 print (":]\n")
+exit(0)
