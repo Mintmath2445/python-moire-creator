@@ -3,8 +3,7 @@
 import os
 import math
 import numpy as np
-from PIL import Image as im
-import drawsvg as draw
+from PIL import Image as im, ImageDraw as imdraw
 
 # create array filled with white pixels 500x500, with the variables
 # x is horizontal limit, y is vertical limit and d is the step between each line, in pixels
@@ -97,8 +96,8 @@ print("d = "+str(d))
 print("delta = "+str(delta))
 print("w = "+str(w))
 
-#array = np.full((y, x, 3), 
-                        #255, dtype = np.uint8) 
+array = np.full((y, x, 3), 
+                        255, dtype = np.uint8) 
 
 #prints the array
 #print(array)
@@ -107,28 +106,28 @@ print("w = "+str(w))
 #draw will draw over original image, avec un reseau de lignes 
 #NOTE the order is (x,y) so 0,250, 500,250 will draw a horizontal line of 500 pixels
 
-data = draw.Drawing(x, y, origin= (0, 0))
+data = im.fromarray (array)
+draw = imdraw.Draw(data)
  
 #cercle 1
 i = 0
 while i<=x//d :
-    data.append(draw.Circle(x/3,y/2,d*i, fill= "none", stroke_width = w, stroke = "black"))
+    draw.ellipse((x/3 - d*i, y/2 - d*i, d*i + x/3, d*i + y/2), fill=None,outline = 0, width=w)
     i=i+1
     #if i==50:
         #break
 #print ("End of loop #1")
 
-data.set_pixel_scale(1)
-data.save_svg("cercle1.svg")
+data.save("cercle1.png")
 
 #cercle 2
 n = 0
-while n<=x//delta :
-    data.append(draw.Circle(2*x/3,y/2,delta*n, fill= "none", stroke_width = w, stroke = "black"))
+while n<=x//d :
+    draw.ellipse((2*x/3 - delta*n, y/2 - delta*n, delta*n + 2*x/3, delta*n + y/2), fill=None,outline = 0, width=w)
     n=n+1
     
-data.save_svg("moirecercle.svg")
-#data.show()
+data.save("moirecercle.png")
+data.show()
 #moire avec quelques zones d'interet qui ont ete surlignees
 
 #bleu = zone claire, vert = zone sombre
