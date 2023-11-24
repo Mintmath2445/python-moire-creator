@@ -1,4 +1,3 @@
-
 #imports
 import os
 import math
@@ -6,10 +5,6 @@ import numpy as np
 from PIL import Image as im
 import drawsvg as draw
 
-# create array filled with white pixels 500x500, with the variables
-# x is horizontal limit, y is vertical limit and d is the step between each line, in pixels
-# w is the width of each line
-# didpass is a checking variable for try loops
 didpass = False
 print("input dimensions of image")
 while True :
@@ -42,22 +37,6 @@ while True :
         didpass = False
         break
     
-print("input distance between circles")    
-while True :
-    try:
-        dist = int(input())
-        if dist > x:
-            print("Too large")
-            didpass = False
-        else:
-            didpass = True
-    except ValueError:
-        print("Input an integer")
-        
-    if didpass !=False:
-        didpass = False
-        break    
-    
 print("input step of first set of lines")
 while True :
     try:
@@ -73,12 +52,30 @@ while True :
     if didpass !=False:
         didpass = False
         break
-    
+#the angle will be 90-angle, but the input will be close to 0, without it being 0    
+print("input angle in degrees")    
+while True :
+    try:
+        angle = int(input())
+        if angle > 180 and angle == 90:
+            print("Too large or angle = 90")
+            didpass = False
+        else:
+            didpass = True
+    except ValueError:
+        print("Input an integer")
+        
+    if didpass !=False:
+        a = math.pi*(angle/180)
+        arad = math.pi*((90-angle)/180)
+        didpass = False
+        break     
+     
 print("input step of second set of lines")
 while True :
     try:
-        delta = int(input())
-        if delta > x:
+        delta = int(input())/math.sin(arad)
+        if delta > x :
             print("Too large")
             didpass = False
         else:
@@ -105,57 +102,51 @@ while True :
     if didpass !=False:
         didpass = False
         break
-          
+        
 #for testing
 print("x = "+str(x))
 print("y = "+str(y))
 print("d = "+str(d))
 print("delta = "+str(delta))
 print("w = "+str(w))
-
-#array = np.full((y, x, 3), 
-                        #255, dtype = np.uint8) 
-
-#prints the array
-#print(array)
-
-#saves the array into im format to be transformed into png
-#draw will draw over original image, avec un reseau de lignes 
-#NOTE the order is (x,y) so 0,250, 500,250 will draw a horizontal line of 500 pixels
+print("a = "+str(a))
 
 data = draw.Drawing(x, y, origin= (0, 0))
  
-#cercle 1
+#lignes 1
 i = 0
 while i<=x//d :
-    data.append(draw.Circle(x/2-dist/2,y/2,d*i, fill= "none", stroke_width = w, stroke = "black"))
+    data.append(draw.Line(d*i,y,d*i,0, fill= "none", stroke_width = w, stroke = "black"))
     i=i+1
     #if i==50:
         #break
 #print ("End of loop #1")
 
 data.set_pixel_scale(1)
-data.save_svg("cercle1.svg")
+data.save_svg("angle1.svg")
 
-#cercle 2
+#plan de lignes 2
 n = 0
 while n<=x//delta :
-    data.append(draw.Circle(x/2+dist/2,y/2,delta*n, fill= "none", stroke_width = w, stroke = "black"))
+    data.append(draw.Line(delta*n,y,y/math.tan(arad)+delta*n,0, fill= "none", stroke_width = w, stroke = "black"))
     n=n+1
     
-data.save_svg("moirecercle.svg")
+data.save_svg("moireangle.svg")
 #data.show()
 #moire avec quelques zones d'interet qui ont ete surlignees
 
 #bleu = zone claire, vert = zone sombre
 m=0
-#while m<=x//d :
-    #draw.line(0, y/2, x/3, )
+while m<=x//d :
+    data.append(draw.Line(0, y-m*(-d*((d-delta)*math.tan(arad)/d)+d*math.tan(arad)), x, y-((x-d)*(((d-delta)*math.tan(arad))/d)+m*d*math.tan(arad)), fill= "none", stroke_width = 2, stroke = "blue"))
+    data.append(draw.Line(0, y-m*(-d*((d-delta)*math.tan(arad)/d)+d*math.tan(arad))-d*math.tan(arad)/2, x, y-((x-d)*(((d-delta)*math.tan(arad))/d)+m*d*math.tan(arad))-d*math.tan(arad)/2, fill= "none", stroke_width = 2, stroke = "green"))
+    m=m+1
 
-#data.save("zonescercle.png")
+data.save_svg("zonesangle.svg")
 
 #end message
 print ("\nB)\n")
 print ("!!! All done !!!\n")
 print (":]\n")
 exit(0)
+      
